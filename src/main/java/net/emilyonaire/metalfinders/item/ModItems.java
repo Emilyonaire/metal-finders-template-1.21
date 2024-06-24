@@ -14,5 +14,7 @@ public class ModItems {
 
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, new Identifier(MetalFinders.MOD_ID, name), item);
+        //what the fuck why doesnt this work???
+        //https://www.youtube.com/watch?v=5ms6RiR4SQ4&list=PLKGarocXCE1EO43Dlf5JGh7Yk-kRAXUEJ&index=2
     }
 }
