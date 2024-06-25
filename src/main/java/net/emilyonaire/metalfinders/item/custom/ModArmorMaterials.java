@@ -1,5 +1,6 @@
 package net.emilyonaire.metalfinders.item.custom;
 
+import net.emilyonaire.metalfinders.item.ModItems;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.recipe.Ingredient;
@@ -32,7 +33,7 @@ public class ModArmorMaterials implements ArmorMaterial {
 
     @Override
     public Ingredient getRepairIngredient() {
-        return Ingredient.ofItems(RegisterItems.GILDED_NETHERITE);
+        return Ingredient.ofItems(ModItems.RUBY);
     }
 
     @Override
