@@ -1,0 +1,9 @@
+{
+  "item.metal-finders.ruby": "Ruby",
+  "item.metal-finders.raw_ruby": "Uncut Ruby",
+  "item.metal-finders.headphones": "Headphones",
+  "item.metal-finders.basic_metal_detector": "Handheld Metal Detector",
+  "item.metal-finders.gold_metal_detector": "Science Mad Kid's Detector",
+
+  "itemGroup.metal_finder_group": "Detectorists"
+}

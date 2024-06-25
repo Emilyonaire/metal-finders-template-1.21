@@ -1,20 +1,51 @@
 package net.emilyonaire.metalfinders.item;
 
 import net.emilyonaire.metalfinders.MetalFinders;
+import net.emilyonaire.metalfinders.item.custom.MetalDetectorItem;
+import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.minecraft.item.ArmorItem;
+import net.minecraft.item.ArmorMaterials;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroups;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
-import org.intellij.lang.annotations.Identifier;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.Rarity;
+
+import static net.minecraft.item.Items.register;
 
 public class ModItems {
+    public static final Item RUBY = registerItem("ruby", new Item(new Item.Settings()));
+    public static final Item RAW_RUBY = registerItem("raw_ruby", new Item(new Item.Settings()));
+
+//    public static final Item HEADPHONES = registerItem("headphones", new Item(new Item.Settings()));
+    public static final Item HEADPHONES = registerItem(
+            "headphones", new ArmorItem(ArmorMaterials.GOLD, ArmorItem.Type.HELMET, new Item.Settings().maxDamage(ArmorItem.Type.HELMET.getMaxDamage(33)))
+    );
+
+    public static final Item BASIC_METAL_DETECTOR = registerItem("basic_metal_detector", new MetalDetectorItem(new Item.Settings().maxDamage(64).rarity(Rarity.COMMON)));
+    public static final Item GOLD_METAL_DETECTOR = registerItem("gold_metal_detector", new MetalDetectorItem(new Item.Settings().maxDamage(64).rarity(Rarity.UNCOMMON)));
+
+    private static void addItemsToIngredientItemGroup(FabricItemGroupEntries entries){
+        entries.add(RUBY);
+        entries.add(RAW_RUBY);
+
+        entries.add(HEADPHONES);
+
+        entries.add(BASIC_METAL_DETECTOR);
+        entries.add(GOLD_METAL_DETECTOR);
+    }
+
     public static void registerModItems() {
         MetalFinders.LOGGER.info("Registering Mod Items for " + MetalFinders.MOD_ID);
 
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(ModItems::addItemsToIngredientItemGroup);
     }
 
     private static Item registerItem(String name, Item item) {
-        return Registry.register(Registries.ITEM, new Identifier(MetalFinders.MOD_ID, name), item);
-        //what the fuck why doesnt this work???
-        //https://www.youtube.com/watch?v=5ms6RiR4SQ4&list=PLKGarocXCE1EO43Dlf5JGh7Yk-kRAXUEJ&index=2
+        return Registry.register(Registries.ITEM, Identifier.of(MetalFinders.MOD_ID, name), item);
+
+
     }
 }

@@ -1,6 +1,9 @@
 package net.emilyonaire.metalfinders;
 
+
+import net.emilyonaire.metalfinders.item.ModItemGroups;
 import net.emilyonaire.metalfinders.item.ModItems;
+import net.emilyonaire.metalfinders.item.custom.ModArmorMaterials;
 import net.fabricmc.api.ModInitializer;
 
 import org.slf4j.Logger;
@@ -13,9 +16,10 @@ public class MetalFinders implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		
 
-		LOGGER.info("Hello Fabric world!");
+
+		LOGGER.info("Hello Fabric world! Registering!");
 		ModItems.registerModItems();
+		ModItemGroups.registerItemGroups();
 	}
 }
