@@ -27,7 +27,7 @@ public class ModArmorMaterials  {
         map.put(ArmorItem.Type.HELMET, 4);
         map.put(ArmorItem.Type.BODY, 1);
     }), 15, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.0f, 0.0f, () -> Ingredient.ofItems((ModItems.RUBY)),
-            List.of(new ArmorMaterial.Layer(Identifier.of(MetalFinders.MOD_ID, "ruby"), "", false)));
+            List.of(new ArmorMaterial.Layer(Identifier.of(MetalFinders.MOD_ID, "headphones"), "", false)));
 
 
 

@@ -1,6 +1,7 @@
 package net.emilyonaire.metalfinders.item.custom;
 
 import net.emilyonaire.metalfinders.MetalFinders;
+import net.emilyonaire.metalfinders.item.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -60,7 +61,7 @@ public class MetalDetectorItem extends Item {
                 }
             }
             if(!foundBlock){
-                player.sendMessage(Text.literal("No Valuable Block Found!"), false);
+                player.sendMessage(Text.literal("No Valuable Block Found!"), true);
             }
 
         }
@@ -121,9 +122,10 @@ public class MetalDetectorItem extends Item {
     private void outputValuableCoordinates(BlockPos blockPos, PlayerEntity player, Block block, String rarity){
         ItemStack helmetStack = player.getEquippedStack(EquipmentSlot.HEAD);
         if(rarity != "common"){
-            if(!helmetStack.isEmpty() && helmetStack.isOf(Items.DIAMOND_HELMET)){
+            if(!helmetStack.isEmpty() && helmetStack.isOf(ModItems.HEADPHONES)){
+//                Items.DIAMOND_HELMET
                 //check to see if the player has headphones on (this is a custom item, for now just check if truthy)
-                player.sendMessage(Text.literal("Found " + block.asItem().getName().getString() + " at " + "(" + blockPos.getX() + ", " + blockPos.getY() + ", " + blockPos.getZ() + ")"), false);
+                player.sendMessage(Text.literal("Found " + block.asItem().getName().getString() + " at " + "(" + blockPos.getX() + ", " + blockPos.getY() + ", " + blockPos.getZ() + ")"), true);
 
             }else{
                 Text msg = Text.literal("You need headphones for this tier of detector!");
@@ -132,7 +134,7 @@ public class MetalDetectorItem extends Item {
             }
 
         } else {
-            player.sendMessage(Text.literal("Found " + block.asItem().getName().getString() + " at " + "(" + blockPos.getX() + ", " + blockPos.getY() + ", " + blockPos.getZ() + ")"), false);
+            player.sendMessage(Text.literal("Found " + block.asItem().getName().getString() + " at " + "(" + blockPos.getX() + ", " + blockPos.getY() + ", " + blockPos.getZ() + ")"), true);
         }
 
 

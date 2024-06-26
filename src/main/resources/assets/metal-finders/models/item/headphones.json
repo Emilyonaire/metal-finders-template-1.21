@@ -4,6 +4,7 @@
 		"0": "metal-finders:item/headphones",
 		"particle": "headphones"
 	},
+
 	"elements": [
 		{
 			"from": [0.5, 14.425, 7],
