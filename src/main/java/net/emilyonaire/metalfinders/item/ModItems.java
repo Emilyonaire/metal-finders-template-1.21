@@ -2,6 +2,7 @@ package net.emilyonaire.metalfinders.item;
 
 import net.emilyonaire.metalfinders.MetalFinders;
 import net.emilyonaire.metalfinders.item.custom.MetalDetectorItem;
+import net.emilyonaire.metalfinders.item.custom.ModArmorMaterials;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.ArmorItem;
@@ -21,7 +22,7 @@ public class ModItems {
 
 //    public static final Item HEADPHONES = registerItem("headphones", new Item(new Item.Settings()));
     public static final Item HEADPHONES = registerItem(
-            "headphones", new ArmorItem(ArmorMaterials.GOLD, ArmorItem.Type.HELMET, new Item.Settings().maxDamage(ArmorItem.Type.HELMET.getMaxDamage(33)))
+            "headphones", new ArmorItem(ModArmorMaterials.RUBY, ArmorItem.Type.HELMET, new Item.Settings().maxDamage(ArmorItem.Type.HELMET.getMaxDamage(33)))
     );
 
     public static final Item BASIC_METAL_DETECTOR = registerItem("basic_metal_detector", new MetalDetectorItem(new Item.Settings().maxDamage(64).rarity(Rarity.COMMON)));
