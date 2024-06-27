@@ -17,13 +17,67 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.math.BlockPos;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MetalDetectorItem extends Item {
+
+
+
     public MetalDetectorItem(Settings settings) {
         super(settings);
     }
 
     @Override
     public ActionResult useOnBlock(ItemUsageContext context) {
+
+        //setup
+        //basic blocks
+        List<Block> common = new ArrayList<>();
+        List<Block> uncommon = new ArrayList<>();
+        List<Block> rare = new ArrayList<>();
+        List<Block> epic = new ArrayList<>();
+
+        // Rarity 1 blocks are common
+        common.add(Blocks.IRON_ORE);
+        common.add(Blocks.DEEPSLATE_IRON_ORE);
+        common.add(Blocks.COAL_ORE);
+        common.add(Blocks.DEEPSLATE_COAL_ORE);
+        common.add(Blocks.COPPER_ORE);
+        common.add(Blocks.DEEPSLATE_COPPER_ORE);
+
+        // Rarity 2 blocks are uncommon
+        uncommon.add(Blocks.LAPIS_ORE);
+        uncommon.add(Blocks.DEEPSLATE_LAPIS_ORE);
+        uncommon.add(Blocks.REDSTONE_ORE);
+        uncommon.add(Blocks.DEEPSLATE_REDSTONE_ORE);
+        uncommon.add(Blocks.CHEST);
+        uncommon.add(Blocks.TRAPPED_CHEST);
+        uncommon.add(Blocks.BARREL);
+        uncommon.add(Blocks.IRON_BLOCK);
+        uncommon.add(Blocks.COAL_BLOCK);
+        uncommon.add(Blocks.GILDED_BLACKSTONE);
+        uncommon.add(Blocks.OBSIDIAN);
+
+        // Rarity 3 blocks are rare
+        rare.add(Blocks.GOLD_ORE);
+        rare.add(Blocks.DEEPSLATE_GOLD_ORE);
+        rare.add(Blocks.EMERALD_ORE);
+        rare.add(Blocks.DEEPSLATE_EMERALD_ORE);
+        rare.add(Blocks.DIAMOND_ORE);
+        rare.add(Blocks.DEEPSLATE_DIAMOND_ORE);
+        rare.add(Blocks.LAPIS_BLOCK);
+        rare.add(Blocks.REDSTONE_BLOCK);
+        rare.add(Blocks.GOLD_BLOCK);
+        rare.add(Blocks.WET_SPONGE);
+
+// Rarity 4 blocks are epic
+        epic.add(Blocks.DIAMOND_BLOCK);
+        epic.add(Blocks.NETHERITE_BLOCK);
+        epic.add(Blocks.ANCIENT_DEBRIS);
+        epic.add(Blocks.EMERALD_BLOCK);
+        epic.add(Blocks.CRYING_OBSIDIAN);
+
 
         //FUNCTIONALITY!
         if(!context.getWorld().isClient()){ //if on server
@@ -54,8 +108,11 @@ public class MetalDetectorItem extends Item {
                 BlockPos currentPos = new BlockPos(positionClicked.getX(), y, positionClicked.getZ());
                 BlockState blockState = context.getWorld().getBlockState(currentPos);
 
+//                to be implemented
+//                if(compareRarity())
+
                 if (isValuableBlock(blockState)) {
-                    outputValuableCoordinates(currentPos, player, blockState.getBlock(), context.getStack().getRarity().asString());
+                    outputValuableCoordinates(currentPos, player, blockState, context.getStack().getRarity().asString());
                     foundBlock = true;
                     break;
                 }
@@ -71,6 +128,7 @@ public class MetalDetectorItem extends Item {
 
         return ActionResult.SUCCESS;
     }
+    //TO BE DEPRECATED, WORKING ON IT RN
     private boolean isValuableBlock(BlockState state){
         return state.isOf(Blocks.IRON_ORE) ||
                 state.isOf(Blocks.DEEPSLATE_IRON_ORE) ||
@@ -119,12 +177,12 @@ public class MetalDetectorItem extends Item {
 
     }
 
-    private void outputValuableCoordinates(BlockPos blockPos, PlayerEntity player, Block block, String rarity){
+    private void outputValuableCoordinates(BlockPos blockPos, PlayerEntity player, BlockState blockstate, String rarity){
+        Block block = blockstate.getBlock();
         ItemStack helmetStack = player.getEquippedStack(EquipmentSlot.HEAD);
         if(rarity != "common"){
             if(!helmetStack.isEmpty() && helmetStack.isOf(ModItems.HEADPHONES)){
 //                Items.DIAMOND_HELMET
-                //check to see if the player has headphones on (this is a custom item, for now just check if truthy)
                 player.sendMessage(Text.literal("Found " + block.asItem().getName().getString() + " at " + "(" + blockPos.getX() + ", " + blockPos.getY() + ", " + blockPos.getZ() + ")"), true);
 
             }else{
@@ -138,5 +196,24 @@ public class MetalDetectorItem extends Item {
         }
 
 
+    }
+
+    private boolean compareRarity(String rarity, BlockState blockState){
+        switch (rarity) {
+            case "common":
+
+                break;
+            case "uncommon":
+                depthToScanTo -= rarityOffset * 2;
+                break;
+            case "rare":
+                depthToScanTo -= rarityOffset * 3;
+                break;
+            case "epic":
+                depthToScanTo -= rarityOffset * 4;
+                break;
+        }
+
+        return true;
     }
 }

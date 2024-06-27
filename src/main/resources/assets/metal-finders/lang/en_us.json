@@ -4,6 +4,8 @@
   "item.metal-finders.headphones": "Headphones",
   "item.metal-finders.basic_metal_detector": "Handheld Metal Detector",
   "item.metal-finders.gold_metal_detector": "Science Mad Kid's Detector",
+  "item.metal-finders.diamond_metal_detector": "Minelab xTreme Detector",
+  "item.metal-finders.netherite_metal_detector": "Manticore PRO Detector",
 
   "itemGroup.metal_finder_group": "Detectorists"
 }

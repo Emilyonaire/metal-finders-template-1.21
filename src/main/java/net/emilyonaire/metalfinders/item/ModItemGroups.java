@@ -20,6 +20,8 @@ public class ModItemGroups {
                 entries.add(ModItems.HEADPHONES);
                 entries.add(ModItems.BASIC_METAL_DETECTOR);
                 entries.add(ModItems.GOLD_METAL_DETECTOR);
+                entries.add(ModItems.DIAMOND_METAL_DETECTOR);
+                entries.add(ModItems.NETHERITE_METAL_DETECTOR);
             })
             .build();
 

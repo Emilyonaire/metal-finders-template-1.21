@@ -27,6 +27,8 @@ public class ModItems {
 
     public static final Item BASIC_METAL_DETECTOR = registerItem("basic_metal_detector", new MetalDetectorItem(new Item.Settings().maxDamage(64).rarity(Rarity.COMMON)));
     public static final Item GOLD_METAL_DETECTOR = registerItem("gold_metal_detector", new MetalDetectorItem(new Item.Settings().maxDamage(64).rarity(Rarity.UNCOMMON)));
+    public static final Item DIAMOND_METAL_DETECTOR = registerItem("diamond_metal_detector", new MetalDetectorItem(new Item.Settings().maxDamage(64).rarity(Rarity.RARE)));
+    public static final Item NETHERITE_METAL_DETECTOR = registerItem("netherite_metal_detector", new MetalDetectorItem(new Item.Settings().maxDamage(64).rarity(Rarity.EPIC)));
 
     private static void addItemsToIngredientItemGroup(FabricItemGroupEntries entries){
         entries.add(RUBY);
@@ -36,6 +38,8 @@ public class ModItems {
 
         entries.add(BASIC_METAL_DETECTOR);
         entries.add(GOLD_METAL_DETECTOR);
+        entries.add(DIAMOND_METAL_DETECTOR);
+        entries.add(NETHERITE_METAL_DETECTOR);
     }
 
     public static void registerModItems() {
