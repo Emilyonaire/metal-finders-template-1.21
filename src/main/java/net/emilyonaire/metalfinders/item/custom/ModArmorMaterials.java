@@ -6,6 +6,7 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.ArmorMaterials;
+import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -26,7 +27,7 @@ public class ModArmorMaterials  {
         map.put(ArmorItem.Type.CHESTPLATE, 1);
         map.put(ArmorItem.Type.HELMET, 4);
         map.put(ArmorItem.Type.BODY, 1);
-    }), 15, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.0f, 0.0f, () -> Ingredient.ofItems((ModItems.RUBY)),
+    }), 15, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.0f, 0.0f, () -> Ingredient.ofItems((Items.IRON_INGOT)),
             List.of(new ArmorMaterial.Layer(Identifier.of(MetalFinders.MOD_ID, "headphones"), "", false)));
 
 

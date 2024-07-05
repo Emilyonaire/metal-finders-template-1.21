@@ -2,7 +2,7 @@
 	"credit": "Made with Blockbench",
 	"textures": {
 		"0": "metal-finders:item/basic_metal_detector_3d",
-		"particle": "basic_metal_detector_3d"
+		"particle": "metal-finders:item/basic_metal_detector_3d"
 	},
 	"elements": [
 		{
